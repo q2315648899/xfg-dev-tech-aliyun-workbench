@@ -11,8 +11,14 @@ ENV PARAMS=""
 ENV TZ=PRC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+# 在容器内创建目录/home/project 用于存放应用程序和相关文件
+RUN mkdir -p /home/project
+
+# 设置工作目录为/home/project，即后续的命令都在这个工作目录下执行。
+WORKDIR /home/project
+
 # 添加应用
-ADD xfg-dev-tech-app/target/xfg-dev-tech-app.jar /xfg-dev-tech-app.jar
+ADD xfg-dev-tech-app/target/xfg-dev-tech-app.jar /home/project/xfg-dev-tech-app.jar
 
 ## 在镜像运行为容器后执行的命令
-ENTRYPOINT ["sh","-c","java -jar $JAVA_OPTS /xfg-dev-tech-app.jar $PARAMS"]
+ENTRYPOINT ["sh","-c","java -jar $JAVA_OPTS /home/project/xfg-dev-tech-app.jar $PARAMS"]
