@@ -1,0 +1,1 @@
+docker build -t fuzhengwei/xfg-dev-tech-app:1.0 -f ./Dockerfile .
