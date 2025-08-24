@@ -27,7 +27,7 @@ public class Application {
         response.setContentType("text/event-stream");
         response.setCharacterEncoding("UTF-8");
         response.setHeader("Cache-Control", "no-cache");
-
+        // 测试git提交
         ResponseBodyEmitter emitter = new ResponseBodyEmitter();
 
         String[] words = new String[]{"嗨，臭宝。\r\n", "恭喜💐 ", "你的", " 项目 ", "部", "署", "测", "试", "成", "功", "了啦🌶！","\r\nBy 小傅哥 https://bugstack.cn"};
